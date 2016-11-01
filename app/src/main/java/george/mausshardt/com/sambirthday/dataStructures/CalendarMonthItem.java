@@ -6,9 +6,9 @@ import java.util.ArrayList;
  * Created by George on 10/24/2016
  */
 
-public class CalendarGroupItem {
+public class CalendarMonthItem {
     private String name;
-    private ArrayList<CalendarListItem> items;
+    private ArrayList<CalendarDayItem> items;
 
     public String getName() {
         return name;
@@ -18,11 +18,11 @@ public class CalendarGroupItem {
         this.name = name;
     }
 
-    public ArrayList<CalendarListItem> getItems() {
+    public ArrayList<CalendarDayItem> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<CalendarListItem> items) {
+    public void setItems(ArrayList<CalendarDayItem> items) {
         this.items = items;
     }
 }

@@ -4,7 +4,7 @@ package george.mausshardt.com.sambirthday.dataStructures;
  * Created by George on 10/24/2016.
  */
 
-public class CalendarListItem {
+public class CalendarDayItem {
     private String name;
     private String tag;
 

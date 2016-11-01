@@ -15,22 +15,22 @@ import george.mausshardt.com.sambirthday.R;
  * Created by George on 10/24/2016
  */
 
-public class CalendarListViewAdapter extends BaseExpandableListAdapter {
+public class CalendarMonthListViewAdapter extends BaseExpandableListAdapter {
     private Context context;
-    private ArrayList<CalendarGroupItem> groups;
+    private ArrayList<CalendarMonthItem> groups;
 
-    public CalendarListViewAdapter(Context context, ArrayList<CalendarGroupItem> groups) {
+    public CalendarMonthListViewAdapter(Context context, ArrayList<CalendarMonthItem> groups) {
         this.context = context;
         this.groups = groups;
     }
 
-    public void addItem(CalendarListItem item, CalendarGroupItem group) {
+    public void addItem(CalendarDayItem item, CalendarMonthItem group) {
         if (!groups.contains(group)) {
             groups.add(group);
         }
 
         int index = groups.indexOf(group);
-        ArrayList<CalendarListItem> currentGroup = groups.get(index).getItems();
+        ArrayList<CalendarDayItem> currentGroup = groups.get(index).getItems();
         currentGroup.add(item);
         groups.get(index).setItems(currentGroup);
     }
@@ -72,7 +72,7 @@ public class CalendarListViewAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        CalendarGroupItem group = (CalendarGroupItem) getGroup(groupPosition);
+        CalendarMonthItem group = (CalendarMonthItem) getGroup(groupPosition);
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.calendar_group_item, null);
@@ -87,7 +87,7 @@ public class CalendarListViewAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild,
                              View convertView, ViewGroup parent) {
-        CalendarListItem child = (CalendarListItem) getChild(groupPosition, childPosition);
+        CalendarDayItem child = (CalendarDayItem) getChild(groupPosition, childPosition);
 
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
