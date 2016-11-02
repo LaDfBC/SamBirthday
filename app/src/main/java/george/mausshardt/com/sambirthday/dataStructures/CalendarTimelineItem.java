@@ -1,6 +1,6 @@
 package george.mausshardt.com.sambirthday.dataStructures;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by George on 10/29/2016
@@ -8,7 +8,16 @@ import java.util.ArrayList;
 
 public class CalendarTimelineItem {
     private String name;
-    private ArrayList<CalendarMonthItem> items;
+    private List<CalendarMonthItem> items;
+
+    public CalendarTimelineItem() {
+
+    }
+
+    public CalendarTimelineItem(String name) {
+        this();
+        this.name = name;
+    }
 
     public String getName() {
         return name;
@@ -18,11 +27,15 @@ public class CalendarTimelineItem {
         this.name = name;
     }
 
-    ArrayList<CalendarMonthItem> getItems() {
+    List<CalendarMonthItem> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<CalendarMonthItem> items) {
+    public void setItems(List<CalendarMonthItem> items) {
         this.items = items;
+    }
+
+    public void addItem(CalendarMonthItem item) {
+        items.add(item);
     }
 }
