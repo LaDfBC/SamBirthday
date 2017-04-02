@@ -8,6 +8,10 @@ public class CalendarDayItem {
     private String name;
     private String tag;
 
+    public CalendarDayItem(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

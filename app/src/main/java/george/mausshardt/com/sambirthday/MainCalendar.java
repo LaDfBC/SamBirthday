@@ -5,53 +5,51 @@ import android.os.Bundle;
 import android.widget.ExpandableListView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
-import george.mausshardt.com.sambirthday.dataStructures.CalendarMonthItem;
-import george.mausshardt.com.sambirthday.dataStructures.CalendarDayItem;
-import george.mausshardt.com.sambirthday.dataStructures.CalendarMonthListViewAdapter;
+import george.mausshardt.com.sambirthday.content.StartupLoader;
+import george.mausshardt.com.sambirthday.dataStructures.CalendarTimelineItem;
+import george.mausshardt.com.sambirthday.dataStructures.CalendarTimelineListViewAdapter;
+import george.mausshardt.com.sambirthday.enums.Month;
 
 public class MainCalendar extends AppCompatActivity {
 
-    private CalendarMonthListViewAdapter mainAdapter;
-    private ArrayList<CalendarMonthItem> calendarGroups;
+    private CalendarTimelineListViewAdapter mainAdapter;
+    private ArrayList<CalendarTimelineItem> calendarGroups;
     private ExpandableListView expandableList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar);
 
         expandableList = (ExpandableListView) findViewById(R.id.calendar);
         calendarGroups = setStandardGroups();
-        mainAdapter = new CalendarMonthListViewAdapter(this, calendarGroups);
+        mainAdapter = new CalendarTimelineListViewAdapter(this, calendarGroups);
         expandableList.setAdapter(mainAdapter);
     }
 
-    private ArrayList<CalendarMonthItem> setStandardGroups() {
-        ArrayList<CalendarMonthItem> outerList = new ArrayList<>();
-        ArrayList<CalendarDayItem> innerList = new ArrayList<>();
-        CalendarMonthItem item1 = new CalendarMonthItem();
-        item1.setName("Past");
+    private ArrayList<CalendarTimelineItem> setStandardGroups() {
+        //Past, present, and future
+        ArrayList<CalendarTimelineItem> headings = new ArrayList<>();
 
-        CalendarMonthItem item2 = new CalendarMonthItem();
-        item2.setName("Present");
+        //Get current date
+        Calendar calendar = StartupLoader.getCurrentDate();
+        Month currentMonth = Month.fromMonthInteger(calendar.get(Calendar.MONTH));
 
-        CalendarDayItem month = new CalendarDayItem();
-        month.setName("January");
+        CalendarTimelineItem past = new CalendarTimelineItem("Past");
+        past.setItemsAsMonths(Month.getPreviousMonths(currentMonth));
 
-        CalendarDayItem month2 = new CalendarDayItem();
-        month2.setName("February");
-        innerList.add(month);
-        innerList.add(month2);
+        CalendarTimelineItem present = new CalendarTimelineItem("Present");
+        present.setItemAsSingletonMonth(currentMonth);
 
-        item1.setItems(innerList);
-        item2.setItems(innerList);
+        CalendarTimelineItem future = new CalendarTimelineItem("Future");
+        future.setItemsAsMonths(Month.getFutureMonths(currentMonth));
 
-        outerList.add(item1);
-        outerList.add(item2);
+        headings.add(past);
+        headings.add(present);
+        headings.add(future);
 
-        return outerList;
+        return headings;
     }
 }

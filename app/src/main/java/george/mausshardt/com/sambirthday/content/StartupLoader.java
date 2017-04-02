@@ -1,5 +1,7 @@
 package george.mausshardt.com.sambirthday.content;
 
+import android.support.v7.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -11,16 +13,12 @@ import george.mausshardt.com.sambirthday.dataStructures.CalendarTimelineItem;
  * Created by George on 10/29/2016
  */
 
-public class StartupLoader {
-    private Calendar calendar;
+public class StartupLoader extends AppCompatActivity {
+    private static Calendar calendar;
 
-    public StartupLoader() {
-        calendar = Calendar.getInstance(Locale.US);
-        calendar.setTime(new Date(System.currentTimeMillis()));
+    StartupLoader() {}
+
+    public static Calendar getCurrentDate() {
+        return Calendar.getInstance();
     }
-
-    public ArrayList<CalendarTimelineItem> buildCalendar() {
-
-    }
-
 }

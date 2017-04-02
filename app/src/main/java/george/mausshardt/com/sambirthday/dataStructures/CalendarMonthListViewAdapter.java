@@ -24,16 +24,16 @@ public class CalendarMonthListViewAdapter extends BaseExpandableListAdapter {
         this.groups = groups;
     }
 
-    public void addItem(CalendarDayItem item, CalendarMonthItem group) {
-        if (!groups.contains(group)) {
-            groups.add(group);
-        }
-
-        int index = groups.indexOf(group);
-        ArrayList<CalendarDayItem> currentGroup = groups.get(index).getItems();
-        currentGroup.add(item);
-        groups.get(index).setItems(currentGroup);
-    }
+//    public void addItem(CalendarDayItem item, CalendarMonthItem group) {
+//        if (!groups.contains(group)) {
+//            groups.add(group);
+//        }
+//
+//        int index = groups.indexOf(group);
+//        ArrayList<CalendarDayItem> currentGroup = groups.get(index).getItems();
+//        currentGroup.add(item);
+//        groups.get(index).setItems(currentGroup);
+//    }
 
     @Override
     public int getGroupCount() {

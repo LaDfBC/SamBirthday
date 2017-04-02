@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import george.mausshardt.com.sambirthday.R;
 
 /**
- * Created by George on 10/29/2016.
+ * Created by George on 10/29/2016
  */
 
 public class CalendarTimelineListViewAdapter extends BaseExpandableListAdapter {
